@@ -1,0 +1,14 @@
+.table{
+    width: 600px;
+    height: auto;
+    border: 1px solid #c4c4c4;
+
+    &__head{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    &__data{
+        text-align: center;
+        padding: 16px;
+    }
+}

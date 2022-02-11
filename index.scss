@@ -1,16 +1,9 @@
 $secondary-color: #00a826;
 $background-contrast: #383838;
 
-@import "./src/components/card/card";
-@import "./src/components/Select/select";
-@import "./src/components/Button/button";
-@import "./src/components/Main/main";
-@import "./src/components/Header/header";
-
 * {
     box-sizing: border-box;
 }
-
 body,
 html {
     margin: 0%;
@@ -18,3 +11,10 @@ html {
     overflow-x: hidden;
     font-family: "Roboto", sans-serif;
 }
+
+@import "./src/components/card/card";
+@import "./src/components/Select/select";
+@import "./src/components/Button/button";
+@import "./src/components/Main/main";
+@import "./src/components/Header/header";
+@import "./src/components/Result/result";

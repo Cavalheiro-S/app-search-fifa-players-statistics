@@ -1,4 +1,4 @@
-import MatchController from "../controller/Match-Controller";
+import MatchController, { responseProps } from "../controller/Match-Controller";
 
 class Match {
 
@@ -12,10 +12,14 @@ class Match {
         this.arena = document.querySelector<HTMLSelectElement>(`#card${numberID}arena`)?.value
     }
 
-    confrontResult(){
+    confrontResult(): Promise<responseProps> {
         const matchController = new MatchController(this.player1, this.player2,this.arena);
+        return matchController.playersConfront();
+    }
 
-        matchController.playersConfront();
+    testFields() : boolean {
+        const matchController = new MatchController(this.player1, this.player2,this.arena);
+        return matchController.verifyInputs();
     }
 
 }

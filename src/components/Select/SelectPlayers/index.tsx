@@ -4,8 +4,6 @@ import ArenaEnum from "../../../enums/arenaEnum";
 import PlayerProps from "../../../interface/PlayerInterface";
 import { PlayerContext } from '../../../context/PlayerContext';
 
-
-
 interface SelectPlayersProps {
     name: string;
     arena?: ArenaEnum;

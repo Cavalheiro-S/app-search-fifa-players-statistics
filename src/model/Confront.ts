@@ -1,4 +1,4 @@
-interface ConfrontLastGames{
+export interface ConfrontResultLastGames{
     home_name: string,
     home_team_name: string;
     home_player: string,
@@ -9,9 +9,16 @@ export interface ConfrontResult{
     average_goals: {
         jogadorA_average: string,
         jogadorA_goals: number,
-        jogadorB_average: number
+        jogadorB_average: string,
+        jogadorB_goals: number
     };
-    last_games: ConfrontLastGames[];
+    jogadorA: {
+        name:string
+    }
+    jogadorB:{
+        name:string
+    }
+    last_games: ConfrontResultLastGames[];
 }
 
 class Confront {

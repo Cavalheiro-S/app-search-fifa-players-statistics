@@ -1,6 +1,10 @@
 import axios from "axios";
 import { ConfrontResult } from '../model/Confront';
 
+export interface responseProps {
+    textResponse: string;
+    data : ConfrontResult | null;
+} 
 
 class MatchController {
     player1: string | undefined;
@@ -14,23 +18,34 @@ class MatchController {
         this.arena = arena;
     }
 
-    playersConfront(): void {
-        if (this.player1 === this.player2) {
-            alert("Os jogadores não podem ser os mesmos")
-        } else {
-            const URL = `https://eugreen.herokuapp.com/get_x1?playerA=${this.player1}&playerB=${this.player2}&uid=`;
+    playersConfront() : Promise<responseProps> {
 
-            axios.get<ConfrontResult>(URL).then(confront => {
-                if (confront.data.last_games.length === 0) {
-                    alert("Nenhum jogo encontrado")
-                }
-                else {
-                    console.log(confront.data);
-                }
-            });
+        const URL = `https://eugreen.herokuapp.com/get_x1?playerA=${this.player1}&playerB=${this.player2}&uid=`;
+        
+        return new Promise<responseProps>(async (resolve , reject) => {
+            const confrontResult = await axios.get<ConfrontResult>(URL)
+            if (confrontResult.data.last_games.length === 0) {
+                reject({
+                    textResponse: "Nenhum jogo encontrado",
+                    data: null
+                });
+            }
+            
+            resolve({
+                textResponse: "",
+                data: confrontResult.data
+            })
+        })
+    }
 
+
+    verifyInputs () : boolean{
+
+        if(this.player1 === this.player2){
+            return false
         }
 
+        return true
     }
 }
 
