@@ -1,0 +1,17 @@
+.main{
+    display: flex;
+    flex-direction: column;
+
+    &__button{
+        margin: 32px 0px;
+        padding: 8px 16px;
+    }
+
+    &__cards{
+
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}

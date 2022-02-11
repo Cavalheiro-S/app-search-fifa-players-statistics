@@ -1,0 +1,21 @@
+.button {
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    grid-row: 1/2;
+    grid-column: 2/3;
+    border-radius: 8px;
+    color: white;
+    font-weight: lighter;
+    font-size: 1.1rem;
+    border: 1px solid transparent;
+    transition: .2s ease all;
+    background-color: $secondary-color;
+
+    &:hover{
+
+        border: $secondary-color solid 1px;
+        color: $secondary-color;
+        background-color: white;
+    }
+}
