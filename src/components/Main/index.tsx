@@ -4,31 +4,51 @@ import Button from "../Button";
 import { Card } from "../Card";
 import Header from "../Header";
 import { ResultContext } from '../../context/ResultContext';
-import { ConfrontResult } from '../../model/Confront';
 import Result from "../Result";
+import Loading from "../Loading";
 
 const Main = () => {
 
     const [cardTotal, setCardTotal] = useState<JSX.Element[]>([]);
+    const [hasResult, setHasResult] = useState(false);
+    const [hasLoading, setHasLoading] = useState(false);
     const resultContext = useContext(ResultContext);
 
-    function addCard(number = 0) {
-        setCardTotal([...cardTotal, <Card number={number} />]);
+    function addCard(number : number) : void{
+        setCardTotal([...cardTotal, <Card removeCard={removeCard} number={number} />]);
     }
 
-    function resultPlayer(event: React.FormEvent, match: Match): void {
+    function removeCard(id : number): void {
+    
+        const newCardTotal = cardTotal.filter( (card,index) => {
+            
+            if(index !== id){
+                
+                return card;
+            }
+        })
+        setCardTotal(newCardTotal);
+    }
+
+    function resultMatch(event: React.FormEvent, match: Match): void {
 
         event.preventDefault();
-        if (match.testFields()) {
+
+        if (!match.testFields()) {
+            setHasLoading(true)
             match.confrontResult()
-            .then( result => {
-                resultContext?.setResult(result.data);
-                console.log(result.data);
-            })
-            .catch(result => {
-                alert(result.textResponse)
-                
-            })
+                .then(result => {
+                    resultContext?.setResult(result.data);
+                    setHasResult(true);
+                })
+                .catch(result => {
+                    alert(result.textResponse)
+
+                })
+                .finally(() => setHasLoading(false))
+        }
+        else {
+            alert(match.testFields());
         }
 
     }
@@ -38,9 +58,12 @@ const Main = () => {
             <Header />
             <Button handleClick={addCard} name="Add Card" className="main__button" />
             <div className="main__cards">
-                {cardTotal.map((card, index) => <Card key={index} handleSubmit={resultPlayer} number={index} />)}
+                {cardTotal.map((card, index) => <Card removeCard={removeCard} key={index} handleSubmit={resultMatch} number={index} />)}
             </div>
-            <Result/>
+            <div className="main__loading">
+                {hasLoading ? <Loading /> : null}
+            </div>
+            {hasResult ? <Result /> : null}
         </main>
     )
 }

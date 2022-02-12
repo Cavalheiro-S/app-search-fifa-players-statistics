@@ -17,7 +17,7 @@ class Match {
         return matchController.playersConfront();
     }
 
-    testFields() : boolean {
+    testFields() : string | null {
         const matchController = new MatchController(this.player1, this.player2,this.arena);
         return matchController.verifyInputs();
     }

@@ -12,6 +12,7 @@ html {
 }
 
 .card {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,6 +46,25 @@ html {
   width: 80%;
   height: 32px;
   margin-bottom: 24px;
+}
+
+.card__button--remove {
+  background-color: #aa0808;
+  cursor: pointer;
+  border: none;
+  color: white;
+  position: absolute;
+  padding: 8px;
+  border-radius: 8px;
+  top: 10%;
+  right: 10%;
+  -webkit-transition: .2s ease all;
+  transition: .2s ease all;
+}
+
+.card__button--remove:hover {
+  background-color: white;
+  color: #aa0808;
 }
 
 .card__form {
@@ -170,6 +190,18 @@ html {
   width: 100%;
 }
 
+.main__loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  height: 80px;
+  min-width: 100px;
+}
+
 .header {
   top: 0%;
   -webkit-box-align: center;
@@ -212,5 +244,37 @@ html {
 .table__data {
   text-align: center;
   padding: 16px;
+}
+
+.loading {
+  border-top: 2px solid #00a826;
+  border-right: 2px solid #00a826;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  -webkit-animation: rotateLoading linear 1s infinite;
+          animation: rotateLoading linear 1s infinite;
+}
+
+@-webkit-keyframes rotateLoading {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotateLoading {
+  from {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  to {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
 }
 /*# sourceMappingURL=index.css.map */

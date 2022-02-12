@@ -1,11 +1,13 @@
 import SelectEnum from "../../enums/selectEnum"
 import SelectPlayers from "./SelectPlayers";
-import ArenaEnum from "../../enums/arenaEnum";
+import ArenaEnum from '../../enums/arenaEnum';
+import React from "react";
 
 interface SelectProps {
     id:string;
     className?: string;
     arena: ArenaEnum;
+    setArena?: React.Dispatch<React.SetStateAction<ArenaEnum>>;
     type: SelectEnum;
 }
 
@@ -20,13 +22,19 @@ const Select = (props: SelectProps) => {
         }
         return (
             <select
+                onChange={event => {
+                    if(props.setArena !== undefined){
+                        props.setArena(event.target.value as ArenaEnum)
+                    }
+                }}
+                value={props.arena}
+                required
                 className={`select ${props?.className}`}
                 name="arena"
                 id={props.id}>
-                <option value="Esoccer Battle - 8 mins play">Esoccer Battle - 8 mins play</option>
-                <option value="Esoccer Liga Pro Challenger - 8 mins play">Esoccer Liga Pro Challenger - 8 mins play</option>
-                <option value="Esoccer Liga Pro - 8 mins play">Esoccer Liga Pro - 8 mins play</option>
-                <option value="Live Arena - 10 mins play">Live Arena - 10 mins play</option>
+                <option value={ArenaEnum.EsoccerBattle}>{ArenaEnum.EsoccerBattle}</option>
+                <option value={ArenaEnum.EsoccerLigaChalenger}>{ArenaEnum.EsoccerLigaChalenger}</option>
+                <option value={ArenaEnum.LiveArena}>{ArenaEnum.LiveArena}</option>
 
             </select>
         )

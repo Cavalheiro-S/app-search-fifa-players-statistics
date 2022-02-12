@@ -1,4 +1,5 @@
 .card{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,6 +22,24 @@
         width: 80%;
         height: 32px;
         margin-bottom: 24px;
+    }
+
+    &__button--remove{
+        background-color: #aa0808;
+        cursor: pointer;
+        border: none;
+        color: white;
+        position: absolute;
+        padding: 8px;
+        border-radius: 8px;
+        top: 10%;
+        right: 10%;
+        transition: .2s ease all;
+
+        &:hover{
+            background-color: white;
+            color: #aa0808;
+        }
     }
 
     &__form{

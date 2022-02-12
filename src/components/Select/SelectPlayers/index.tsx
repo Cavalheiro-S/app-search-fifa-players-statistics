@@ -17,6 +17,7 @@ const SelectPlayers = (props: SelectPlayersProps) => {
 
     return (
         <select
+            required
             className="select"
             name={props.name}
             id={props.id}

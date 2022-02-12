@@ -1,0 +1,20 @@
+.loading{
+    border-top: 2px solid $secondary-color;
+    border-right: 2px solid $secondary-color;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    animation: rotateLoading linear 1s infinite;
+}
+
+@keyframes rotateLoading{
+
+    from{
+        transform: rotateZ(0deg)
+    }
+    
+    to{
+
+        transform: rotateZ(360deg);
+    }
+}
