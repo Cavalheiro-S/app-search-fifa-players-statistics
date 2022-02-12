@@ -33,4 +33,3 @@ npm start
 - Typescript
 - Sass
 - Axios
->>>>>>> 0be96d392a9988871035783f5e1778ae1a4472ff
